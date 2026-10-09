@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>California House Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="icon">
+                🏠
+            </div>
+
+            <h1>California House Price</h1>
+
+            <p>
+                Enter the house details to predict its estimated value.
+            </p>
+
+        </div>
+
+
+        <!-- Prediction Form -->
+        <form action="/predict" method="POST">
+
+            <div class="form-grid">
+
+                {% for column in columns %}
+
+                <div class="form-group">
+
+                    <label for="{{ column }}">
+                        {{ column }}
+                    </label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="{{ column }}"
+                        name="{{ column }}"
+                        placeholder="Enter {{ column }}"
+                        required
+                    >
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Predict Button -->
+            <button type="submit">
+                Predict House Price
+            </button>
+
+        </form>
+
+
+        <!-- Prediction Result -->
+
+        {% if prediction is defined %}
+
+        <div class="result">
+
+            <div class="result-icon">
+                🏡
+            </div>
+
+            <div>
+
+                <p class="result-title">
+                    Predicted House Value
+                </p>
+
+                <h2>
+                    ${{ "%.2f"|format(prediction * 100000) }}
+                </h2>
+
+                <p class="result-note">
+                    Estimated California house value
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+</body>
+
+</html>

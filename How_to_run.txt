@@ -1,0 +1,22 @@
+cd C:\Users\sachi\OneDrive\Documents\NareshIT\ML Python\ML python 9AM\flask_examples\Flask_UI_app>
+python -m venv venv
+venv\Scripts\activate
+python app.py
+
+
+
+==== requremets :==============
+sklearn
+joblib
+numpy
+Flask, request, render_template
+
+========================to push project on git==============================================================
+
+echo "# california_sep_9am" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sachinkharat777/california_sep_9am.git
+git push -u origin main
